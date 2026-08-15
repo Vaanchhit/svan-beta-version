@@ -1,0 +1,31 @@
+{
+  "products": {
+    "https://littleboxindia.com/products/brown-twist-front-draped-halter-top": {
+      "fetchedAt": "2026-07-30T10:01:58.718Z",
+      "product": {
+        "id": "scraped-9662dfb6bf56",
+        "retailer": "Littlebox",
+        "brand": "Littlebox India",
+        "title": "XS Brown Twist Front Draped Halter Top",
+        "price": 549,
+        "originalPrice": 569,
+        "currency": "INR",
+        "image": "https://littleboxindia.com/cdn/shop/files/Brown_Twist_Front_Draped_Halter_Top.webp?v=1782288399",
+        "buyUrl": "https://littleboxindia.com/products/brown-twist-front-draped-halter-top",
+        "color": "Brown",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "rating": 4.4,
+        "matchType": "Exact",
+        "availability": "Out of stock",
+        "scrapedAt": "2026-07-30T10:01:58.718Z",
+        "sourceUrl": "https://littleboxindia.com/products/brown-twist-front-draped-halter-top"
+      }
+    }
+  }
+}

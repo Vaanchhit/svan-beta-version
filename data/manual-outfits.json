@@ -1,0 +1,381 @@
+[
+  {
+    "id": "brown-halter-black-loose-pants",
+    "title": "Brown halter with loose black pants",
+    "image": "/outfits/brown-halter-black-loose-pants.png",
+    "imageAlt": "Sleeveless brown halter neck top styled with loose black wide-leg pants",
+    "creator": {
+      "username": "svan.testfit",
+      "displayName": "SVAN Test Fit",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&h=900&q=82",
+      "verified": true
+    },
+    "location": "User upload",
+    "caption": "Sleeveless brown halter energy with loose black pants. Testing the scrape-to-shop flow on one real uploaded outfit.",
+    "likeCount": 32840,
+    "commentCount": 412,
+    "saveCount": 9040,
+    "postedAt": "2026-07-28T09:00:00.000Z",
+    "occasion": "Date Night",
+    "season": "Summer",
+    "style": "Minimal resort tailoring",
+    "aesthetics": ["minimalist", "date", "summer", "clean-girl"],
+    "tags": [
+      "brown sleeveless halter neck top",
+      "brown draped halter top",
+      "black loose wide leg pants",
+      "black palazzo trousers",
+      "minimal outfit"
+    ],
+    "palette": ["#8A6539", "#050505", "#E8E2D8", "#6A655D"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "Brown sleeveless halter neck top, draped wrap front, fitted vest alternatives",
+        "swatch": "#8A6539",
+        "products": [],
+        "scrapeTargets": [
+          {
+            "url": "https://www2.hm.com/en_in/productpage.1293336003.html",
+            "retailer": "H&M",
+            "brand": "H&M",
+            "matchType": "Exact",
+            "fallbackTitle": "Halterneck vest top - dark brown",
+            "fallbackColor": "Dark brown",
+            "fallbackSizes": ["XXS", "XS", "S", "M", "L", "XL", "XXL"]
+          },
+          {
+            "url": "https://www.zara.com/in/en/linen-blend-halter-top-p02638723.html",
+            "retailer": "Zara",
+            "brand": "Zara",
+            "matchType": "Exact",
+            "fallbackTitle": "Linen blend halter top - dark brown",
+            "fallbackColor": "Dark brown",
+            "fallbackSizes": ["S", "M", "L"]
+          },
+          {
+            "url": "https://www.zara.com/in/en/halter-top-p04424308.html",
+            "retailer": "Zara",
+            "brand": "Zara",
+            "matchType": "Close",
+            "fallbackTitle": "Halter top - brown",
+            "fallbackColor": "Brown",
+            "fallbackSizes": ["S", "M", "L"]
+          },
+          {
+            "url": "https://www.zara.com/in/en/draped-halter-top-p06929264.html",
+            "retailer": "Zara",
+            "brand": "Zara",
+            "matchType": "Exact",
+            "fallbackTitle": "Draped halter top - brown",
+            "fallbackColor": "Brown",
+            "fallbackSizes": ["XS", "S", "M", "L"]
+          },
+          {
+            "url": "https://littleboxindia.com/products/brown-twist-front-draped-halter-top",
+            "retailer": "Littlebox",
+            "brand": "Littlebox India",
+            "matchType": "Exact",
+            "fallbackTitle": "Brown twist front draped halter top",
+            "fallbackColor": "Brown",
+            "fallbackSizes": ["XS", "S", "M", "L", "XL"]
+          }
+        ]
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Black loose wide-leg pants, palazzo trousers, flowing relaxed trousers",
+        "swatch": "#050505",
+        "products": [],
+        "scrapeTargets": [
+          {
+            "url": "https://www.myntra.com/Trousers/H%26M/HM-Women-Loose-Fit-Wide-Leg-Trouser/27026358/buy",
+            "retailer": "Myntra",
+            "brand": "H&M",
+            "matchType": "Exact",
+            "fallbackTitle": "Women loose-fit wide leg trouser",
+            "fallbackColor": "Black",
+            "fallbackSizes": ["23", "26", "29", "32", "36", "41", "46"]
+          },
+          {
+            "url": "https://www2.hm.com/en_in/productpage.1301011001.html",
+            "retailer": "H&M",
+            "brand": "H&M",
+            "matchType": "Exact",
+            "fallbackTitle": "Wide trousers - black",
+            "fallbackColor": "Black",
+            "fallbackSizes": ["XXS", "XS", "S", "M", "L", "XL"]
+          },
+          {
+            "url": "https://www.zara.com/in/en/flowing-palazzo-trousers-p05580005.html",
+            "retailer": "Zara",
+            "brand": "Zara",
+            "matchType": "Exact",
+            "fallbackTitle": "Flowing palazzo trousers - black",
+            "fallbackColor": "Black",
+            "fallbackSizes": ["XS", "S", "M", "L"]
+          },
+          {
+            "url": "https://www.zara.com/in/en/long-wide-leg-trousers-p05580008.html",
+            "retailer": "Zara",
+            "brand": "Zara",
+            "matchType": "Exact",
+            "fallbackTitle": "Wide-leg long trousers - black",
+            "fallbackColor": "Black",
+            "fallbackSizes": ["XS", "S", "M", "L"]
+          },
+          {
+            "url": "https://www.zara.com/in/en/palazzo-trousers-with-gold-button-p02257782.html",
+            "retailer": "Zara",
+            "brand": "Zara",
+            "matchType": "Close",
+            "fallbackTitle": "Palazzo trousers with golden button - black",
+            "fallbackColor": "Black",
+            "fallbackSizes": ["XS", "S", "M", "L"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "clean-girl-terrace",
+    "title": "Clean girl terrace whites",
+    "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&h=1500&q=84",
+    "imageAlt": "Clean white shirt styled with blue denim",
+    "creator": {
+      "username": "svan.curated",
+      "displayName": "SVAN Curated",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&h=900&q=82",
+      "verified": true
+    },
+    "location": "Mumbai",
+    "caption": "White cotton, straight denim, soft gold. The easiest clean-girl repeat.",
+    "likeCount": 21480,
+    "commentCount": 316,
+    "saveCount": 6820,
+    "postedAt": "2026-07-28T06:30:00.000Z",
+    "occasion": "Coffee",
+    "season": "Summer",
+    "style": "Clean girl",
+    "aesthetics": ["clean-girl", "minimalist", "summer"],
+    "tags": ["white shirt", "straight jeans", "clean girl", "cotton shirt"],
+    "palette": ["#F7F5EF", "#1B2734", "#B9AA97", "#050505"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "White cotton shirt, poplin blouse, clean tank alternatives",
+        "swatch": "#F7F5EF",
+        "products": []
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Straight blue jeans and clean denim skirt options",
+        "swatch": "#1B2734",
+        "products": []
+      }
+    ]
+  },
+  {
+    "id": "y2k-cargo-mirror",
+    "title": "Y2K cargo mirror fit",
+    "image": "https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=1100&h=1500&q=84",
+    "imageAlt": "White fitted tank with olive cargo pants",
+    "creator": {
+      "username": "rheainlayers",
+      "displayName": "Rhea Sen",
+      "avatar": "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=900&h=900&q=82",
+      "verified": true
+    },
+    "location": "Juhu",
+    "caption": "Tiny tank, utility pocket trousers, and enough attitude for the whole plan.",
+    "likeCount": 16720,
+    "commentCount": 231,
+    "saveCount": 4898,
+    "postedAt": "2026-07-28T05:10:00.000Z",
+    "occasion": "Weekend",
+    "season": "All Season",
+    "style": "Y2K utility",
+    "aesthetics": ["y2k", "street", "minimalist"],
+    "tags": ["white tank", "cargo pants", "utility outfit", "y2k"],
+    "palette": ["#F7F5EF", "#546045", "#171717", "#C8B9A8"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "Fitted white tank top, cotton vest top, square-neck tank",
+        "swatch": "#F7F5EF",
+        "products": []
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Olive cargo pants, parachute cargo trousers, utility pocket pants",
+        "swatch": "#546045",
+        "products": []
+      }
+    ]
+  },
+  {
+    "id": "date-night-emerald",
+    "title": "Emerald date-night satin",
+    "image": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1100&h=1500&q=84",
+    "imageAlt": "Emerald evening top styled with a black skirt",
+    "creator": {
+      "username": "zoya.archive",
+      "displayName": "Zoya Rahman",
+      "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&h=900&q=82",
+      "verified": true
+    },
+    "location": "Kala Ghoda",
+    "caption": "One deep-green top, one black midi, zero overthinking.",
+    "likeCount": 20780,
+    "commentCount": 319,
+    "saveCount": 5520,
+    "postedAt": "2026-07-27T20:02:00.000Z",
+    "occasion": "Date Night",
+    "season": "Monsoon",
+    "style": "Modern evening",
+    "aesthetics": ["date", "evening", "minimalist", "monsoon"],
+    "tags": ["green top", "satin blouse", "black skirt", "date night"],
+    "palette": ["#0F4C3A", "#050505", "#D8D2C8", "#B59D69"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "Emerald satin cowl top, draped satin blouse, ruched crop top",
+        "swatch": "#0F4C3A",
+        "products": []
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Black midi skirt, pencil skirt, satin bias skirt",
+        "swatch": "#050505",
+        "products": []
+      }
+    ]
+  },
+  {
+    "id": "minimal-airport-linen",
+    "title": "Minimal airport linen",
+    "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&h=1500&q=84",
+    "imageAlt": "Cream linen shirt and relaxed dark trousers",
+    "creator": {
+      "username": "arjunwears",
+      "displayName": "Arjun Mehta",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&h=900&q=82"
+    },
+    "location": "Delhi T2",
+    "caption": "Breathable shirt, clean trousers, done.",
+    "likeCount": 9340,
+    "commentCount": 96,
+    "saveCount": 2190,
+    "postedAt": "2026-07-27T07:15:00.000Z",
+    "occasion": "Travel",
+    "season": "Summer",
+    "style": "Quiet luxury",
+    "aesthetics": ["travel", "summer", "minimalist", "clean-girl"],
+    "tags": ["linen shirt", "charcoal trousers", "travel outfit", "quiet luxury"],
+    "palette": ["#EEE6D8", "#252525", "#866F58", "#FFFFFF"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "Cream linen shirt, resort shirt, textured linen overshirt",
+        "swatch": "#EEE6D8",
+        "products": []
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Charcoal trousers, relaxed twill trousers, technical trousers",
+        "swatch": "#252525",
+        "products": []
+      }
+    ]
+  },
+  {
+    "id": "monsoon-cocoa-knit",
+    "title": "Cocoa knit monsoon layer",
+    "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&h=1500&q=84",
+    "imageAlt": "Cocoa knit cardigan styled with black mini skirt",
+    "creator": {
+      "username": "naina.styles",
+      "displayName": "Naina Iyer",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&h=900&q=82",
+      "verified": true
+    },
+    "location": "Bengaluru",
+    "caption": "Soft grunge but still polished enough for dinner.",
+    "likeCount": 7820,
+    "commentCount": 88,
+    "saveCount": 1964,
+    "postedAt": "2026-07-26T19:40:00.000Z",
+    "occasion": "Date Night",
+    "season": "Monsoon",
+    "style": "Soft grunge",
+    "aesthetics": ["date", "y2k", "monsoon", "street"],
+    "tags": ["cocoa cardigan", "knit top", "black mini skirt", "monsoon outfit"],
+    "palette": ["#6B4735", "#111111", "#E3D5C7", "#6D7178"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "Cropped cardigan, cocoa knit top, fitted knit wrap top",
+        "swatch": "#6B4735",
+        "products": []
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Black mini skirt, twill skort, pleated mini skirt",
+        "swatch": "#111111",
+        "products": []
+      }
+    ]
+  },
+  {
+    "id": "workwear-soft-tailoring",
+    "title": "Soft workwear tailoring",
+    "image": "https://images.unsplash.com/photo-1548454782-15b189d129ab?auto=format&fit=crop&w=1100&h=1500&q=84",
+    "imageAlt": "Oversized blazer with black tailored trousers",
+    "creator": {
+      "username": "mira.notes",
+      "displayName": "Mira Kapoor",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&h=900&q=82",
+      "verified": true
+    },
+    "location": "Gurugram",
+    "caption": "Office lines without the stiffness.",
+    "likeCount": 14550,
+    "commentCount": 202,
+    "saveCount": 4160,
+    "postedAt": "2026-07-26T09:00:00.000Z",
+    "occasion": "Work",
+    "season": "All Season",
+    "style": "Relaxed tailoring",
+    "aesthetics": ["workwear", "minimalist", "clean-girl"],
+    "tags": ["linen blazer", "black trousers", "workwear", "tailored outfit"],
+    "palette": ["#B9AA97", "#0F0F0F", "#EFE7DA", "#6A655D"],
+    "segments": [
+      {
+        "key": "upper-wear",
+        "label": "Upper Wear",
+        "description": "Oversized blazer, single breasted blazer, longline clean blazer",
+        "swatch": "#B9AA97",
+        "products": []
+      },
+      {
+        "key": "lower-wear",
+        "label": "Lower Wear",
+        "description": "Black tailored trousers, wide suit trousers, relaxed pants",
+        "swatch": "#0F0F0F",
+        "products": []
+      }
+    ]
+  }
+]
