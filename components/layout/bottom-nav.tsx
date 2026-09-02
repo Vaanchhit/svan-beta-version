@@ -49,7 +49,7 @@ export function BottomNav() {
   );
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 mx-auto w-full max-w-[430px] px-3 pb-3">
+    <nav className="fixed inset-x-0 bottom-0 z-30 mx-auto w-full max-w-[430px] px-3 pb-3 md:hidden">
       <div className="glass mobile-safe-bottom grid grid-cols-5 rounded-[1.85rem] px-2 py-2">
         {tabs.map((tab) => {
           const Icon = tab.icon;

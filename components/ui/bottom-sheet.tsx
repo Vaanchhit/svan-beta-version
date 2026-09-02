@@ -39,7 +39,7 @@ export function BottomSheet({
             role="dialog"
             aria-modal="true"
             className={cn(
-              "fixed inset-x-0 bottom-0 z-50 mx-auto max-h-[86dvh] w-full max-w-[430px] overflow-hidden rounded-t-[2rem] border border-white/[0.12] bg-carbon/90 shadow-lift backdrop-blur-2xl",
+              "fixed inset-x-0 bottom-0 z-50 mx-auto max-h-[86dvh] w-full max-w-[430px] md:max-w-4xl overflow-hidden rounded-t-[2rem] border border-white/[0.12] bg-carbon/90 shadow-lift backdrop-blur-2xl",
               className
             )}
             initial={{ y: "100%", opacity: 0.85 }}
