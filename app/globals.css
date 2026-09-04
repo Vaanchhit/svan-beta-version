@@ -5,6 +5,23 @@
 :root {
   color-scheme: dark;
   background: #050505;
+  --bg-base: #050505;
+  --bg-panel: rgba(17, 18, 18, 0.82);
+  --bg-panel-strong: rgba(12, 12, 12, 0.94);
+  --line-subtle: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --text-soft: rgba(247, 245, 239, 0.7);
+  --text-muted: rgba(247, 245, 239, 0.5);
+  --forest: #0f4c3a;
+  --bronze: #b9864f;
+  --steel: #8ba7b2;
+  --ivory: #f7f5ef;
+  --rouge: #963e3f;
+  --ink-violet: #272234;
+  --motion-fast: 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-standard: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-editorial: 780ms cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-ambient: 0 30px 80px rgba(0, 0, 0, 0.52);
 }
 
 * {
@@ -12,7 +29,7 @@
 }
 
 html {
-  background: #050505;
+  background: var(--bg-base);
   scroll-behavior: smooth;
 }
 
@@ -20,13 +37,40 @@ body {
   min-height: 100dvh;
   margin: 0;
   background:
-    radial-gradient(circle at 20% -10%, rgba(15, 76, 58, 0.28), transparent 30rem),
-    radial-gradient(circle at 88% 8%, rgba(185, 134, 79, 0.16), transparent 24rem),
-    radial-gradient(circle at 55% 72%, rgba(139, 167, 178, 0.1), transparent 28rem),
+    radial-gradient(circle at 14% -10%, rgba(39, 34, 52, 0.52), transparent 28rem),
+    radial-gradient(circle at 86% 8%, rgba(150, 62, 63, 0.24), transparent 23rem),
+    radial-gradient(circle at 24% 78%, rgba(15, 76, 58, 0.24), transparent 25rem),
+    linear-gradient(120deg, rgba(185, 134, 79, 0.08), transparent 38%),
     #050505;
-  color: #f7f5ef;
+  color: var(--ivory);
   font-family: Inter, "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
+    radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px);
+  background-size: 100% 100%, 10px 10px;
+  opacity: 0.3;
+  mix-blend-mode: soft-light;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 7.5rem 7.5rem;
+  opacity: 0.08;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
 }
 
 button,
@@ -63,8 +107,8 @@ img {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
     rgba(11, 12, 12, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 22px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(28px) saturate(1.18);
 }
 
@@ -92,8 +136,102 @@ img {
     linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035)),
     rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 16px 55px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  box-shadow: 0 16px 55px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(18px) saturate(1.12);
+}
+
+.editorial-shell {
+  isolation: isolate;
+}
+
+.display-editorial {
+  font-family: "Didot", "Bodoni 72", "Bodoni 72 Smallcaps", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.label-editorial {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.caption-balance {
+  text-wrap: balance;
+}
+
+.image-polish {
+  filter: saturate(1.07) contrast(1.05) brightness(0.95);
+}
+
+.image-veil {
+  background:
+    radial-gradient(circle at 22% 0%, rgba(247, 245, 239, 0.18), transparent 24%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.22) 42%, transparent 68%);
+}
+
+.fashion-focus {
+  outline: none;
+}
+
+.fashion-focus:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(247, 245, 239, 0.9),
+    0 0 0 6px rgba(15, 76, 58, 0.5);
+}
+
+.magnetic {
+  transform: translateZ(0);
+  transition:
+    transform var(--motion-standard),
+    border-color var(--motion-standard),
+    background-color var(--motion-standard),
+    color var(--motion-standard);
+}
+
+.magnetic:hover {
+  transform: translate3d(0, -2px, 0) scale(1.01);
+}
+
+.editorial-rule {
+  position: relative;
+}
+
+.editorial-rule::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 3.4rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--bronze), transparent);
+}
+
+.garment-tag {
+  border: 1px solid rgba(247, 245, 239, 0.35);
+  background: rgba(5, 5, 5, 0.48);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.wardrobe-perspective {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.wardrobe-wood {
+  background:
+    linear-gradient(100deg, rgba(255, 255, 255, 0.1), transparent 18%, rgba(0, 0, 0, 0.22) 52%, rgba(255, 255, 255, 0.08)),
+    repeating-linear-gradient(90deg, rgba(134, 93, 58, 0.34) 0 2px, rgba(58, 37, 26, 0.45) 2px 7px),
+    linear-gradient(135deg, #28170f, #6b4730 42%, #22130d);
+}
+
+.wardrobe-shelf {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(0, 0, 0, 0.12)),
+    linear-gradient(90deg, rgba(185, 134, 79, 0.38), rgba(247, 245, 239, 0.1), rgba(185, 134, 79, 0.3));
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .soft-edge {
@@ -103,8 +241,14 @@ img {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.image-polish {
-  filter: saturate(1.05) contrast(1.02);
+.editorial-angle {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+.editorial-panel {
+  background: linear-gradient(180deg, rgba(17, 17, 18, 0.72), rgba(11, 11, 11, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-ambient);
 }
 
 .mobile-safe-bottom {
@@ -113,4 +257,35 @@ img {
 
 .mobile-safe-top {
   padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+@media (min-width: 768px) {
+  body {
+    background:
+      radial-gradient(circle at 12% -10%, rgba(39, 34, 52, 0.56), transparent 30rem),
+      radial-gradient(circle at 88% 8%, rgba(150, 62, 63, 0.25), transparent 25rem),
+      radial-gradient(circle at 18% 90%, rgba(15, 76, 58, 0.25), transparent 28rem),
+      #050505;
+  }
+}
+
+@media (pointer: fine) {
+  .context-cursor {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .magnetic:hover {
+    transform: none;
+  }
 }

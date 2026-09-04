@@ -4,18 +4,18 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[1.1rem] text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-br from-ivory via-white to-bronze-soft text-black shadow-lift hover:shadow-bronze",
+          "border border-white/10 bg-gradient-to-r from-[#f5efe6] via-white to-[#d2b48d] text-black shadow-[0_20px_40px_rgba(185,134,79,0.28)] hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(185,134,79,0.36)]",
         forest:
-          "bg-gradient-to-br from-forest-light via-forest to-forest text-white shadow-glow hover:shadow-bronze",
+          "bg-gradient-to-br from-forest-light via-forest to-[#102b23] text-white shadow-[0_16px_30px_rgba(15,76,58,0.34)] hover:-translate-y-0.5 hover:shadow-[0_22px_44px_rgba(15,76,58,0.42)]",
         ghost:
-          "border border-white/10 bg-white/10 text-white shadow-glass backdrop-blur-xl hover:border-bronze/40 hover:bg-white/[0.16]",
+          "border border-white/10 bg-white/8 text-white/90 shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur-xl hover:border-bronze/40 hover:bg-white/[0.16]",
         outline:
-          "border border-white/[0.15] bg-white/[0.08] text-white shadow-glass backdrop-blur-xl hover:border-steel/50 hover:bg-white/[0.14]",
+          "border border-white/[0.15] bg-black/20 text-white shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl hover:border-steel/60 hover:bg-white/[0.08]",
         bare: "bg-transparent text-white hover:bg-white/10"
       },
       size: {

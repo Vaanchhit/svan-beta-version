@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Clapperboard, Home, PlusSquare, Search, User } from "lucide-react";
+import { Archive, Home, PlusSquare, Search, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/components/auth/auth-provider";
 import { cn } from "@/lib/utils";
@@ -22,10 +22,10 @@ const baseTabs = [
     match: (path: string) => path.startsWith("/upload")
   },
   {
-    label: "Reels",
-    href: "/reels",
-    icon: Clapperboard,
-    match: (path: string) => path.startsWith("/reels")
+    label: "Wardrobe",
+    href: "/saved",
+    icon: Archive,
+    match: (path: string) => path.startsWith("/saved")
   },
   {
     label: "Profile",
@@ -50,7 +50,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-30 mx-auto w-full max-w-[430px] px-3 pb-3 md:hidden">
-      <div className="glass mobile-safe-bottom grid grid-cols-5 rounded-[1.85rem] px-2 py-2">
+      <div className="glass mobile-safe-bottom grid grid-cols-5 rounded-[1.35rem] px-2 py-2">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = tab.match(pathname);
@@ -60,12 +60,12 @@ export function BottomNav() {
               key={tab.href}
               href={tab.href}
               aria-label={tab.label}
-              className="relative flex h-14 items-center justify-center"
+              className="fashion-focus relative flex h-14 items-center justify-center rounded-[1rem]"
             >
               {isActive ? (
                 <motion.span
                   layoutId="bottom-nav-active"
-                  className="absolute inset-x-2 inset-y-1 rounded-2xl bg-gradient-to-br from-forest/80 via-forest/40 to-bronze/40 shadow-glow"
+                  className="absolute inset-x-2 inset-y-1 rounded-[0.9rem] border border-white/15 bg-[linear-gradient(135deg,rgba(247,245,239,0.2),rgba(15,76,58,0.5),rgba(150,62,63,0.24))] shadow-glow"
                   transition={{ type: "spring", damping: 28, stiffness: 420 }}
                 />
               ) : null}

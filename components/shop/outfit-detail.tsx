@@ -7,7 +7,9 @@ import {
   CheckCircle2,
   Heart,
   MessageCircle,
-  ShoppingBag
+  Send,
+  ShoppingBag,
+  Tag
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -94,12 +96,13 @@ export function OutfitDetail({ id }: OutfitDetailProps) {
 
   return (
     <>
-      <section className="pb-7">
-        <div className="relative">
+      <section className="pb-28 md:grid md:min-h-dvh md:grid-cols-[minmax(0,1.1fr)_minmax(22rem,0.9fr)] md:gap-0 md:pb-0">
+        <div className="relative md:sticky md:top-0 md:h-dvh">
           <motion.img
+            layoutId={`look-image-${outfit.id}`}
             src={outfit.image}
             alt={outfit.imageAlt}
-            className="image-polish h-[62dvh] min-h-[31rem] w-full object-cover"
+            className="image-polish h-[68dvh] min-h-[32rem] w-full object-cover md:h-full"
             initial={{ scale: 1.04, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
@@ -114,11 +117,37 @@ export function OutfitDetail({ id }: OutfitDetailProps) {
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
-            <div className="surface rounded-full px-3 py-1.5 text-xs font-semibold text-white">
-              Outfit ID {outfit.id}
+            <div className="garment-tag rounded-full px-3 py-1.5 text-xs font-semibold text-white">
+              {outfit.style}
             </div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-carbon via-carbon/60 to-transparent p-5 pt-28">
+          <div className="absolute left-[14%] top-[34%] hidden md:block">
+            {outfit.segments[0] ? (
+              <button
+                type="button"
+                data-cursor="Inspect"
+                className="garment-tag fashion-focus magnetic rounded-full px-4 py-2 text-[0.67rem] font-bold uppercase tracking-[0.18em] text-white"
+                onClick={() => setActiveSegment(outfit.segments[0])}
+              >
+                <Tag className="mr-2 inline h-3.5 w-3.5" />
+                {outfit.segments[0].label}
+              </button>
+            ) : null}
+          </div>
+          <div className="absolute bottom-[20%] right-[12%] hidden md:block">
+            {outfit.segments[1] ? (
+              <button
+                type="button"
+                data-cursor="Inspect"
+                className="garment-tag fashion-focus magnetic rounded-full px-4 py-2 text-[0.67rem] font-bold uppercase tracking-[0.18em] text-white"
+                onClick={() => setActiveSegment(outfit.segments[1])}
+              >
+                <Tag className="mr-2 inline h-3.5 w-3.5" />
+                {outfit.segments[1].label}
+              </button>
+            ) : null}
+          </div>
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-carbon via-carbon/60 to-transparent p-5 pt-28 md:hidden">
             <div className="flex items-center gap-3">
               <Avatar
                 src={outfit.creator.avatar}
@@ -142,12 +171,48 @@ export function OutfitDetail({ id }: OutfitDetailProps) {
           </div>
         </div>
 
-        <div className="px-5">
-          <div className="surface mt-4 flex items-center justify-between rounded-[1.5rem] p-3">
-            <div className="flex items-center gap-5 text-sm text-white/70">
+        <div className="px-5 pt-5 md:flex md:min-h-dvh md:flex-col md:justify-center md:px-8 md:py-24 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden md:block"
+          >
+            <button
+              type="button"
+              data-cursor="Profile"
+              className="fashion-focus magnetic flex items-center gap-3 rounded-[1rem] text-left"
+              onClick={() => router.push(`/profile/${outfit.creator.username}`)}
+            >
+              <Avatar
+                src={outfit.creator.avatar}
+                alt={outfit.creator.displayName}
+                size="md"
+              />
+              <span className="min-w-0">
+                <span className="flex items-center gap-1.5 text-sm font-semibold text-white">
+                  {outfit.creator.username}
+                  {outfit.creator.verified ? (
+                    <CheckCircle2 className="h-3.5 w-3.5 fill-forest text-white" />
+                  ) : null}
+                </span>
+                <span className="truncate text-xs text-white/48">{outfit.location}</span>
+              </span>
+            </button>
+            <h1 className="display-editorial mt-7 max-w-xl text-7xl leading-[0.86] text-white">
+              {outfit.title}
+            </h1>
+            <p className="caption-balance mt-5 max-w-lg text-base leading-7 text-white/68">
+              {outfit.caption}
+            </p>
+          </motion.div>
+
+          <div className="surface mt-0 flex items-center justify-between rounded-[1.1rem] p-3 md:mt-8">
+            <div className="flex items-center gap-4 text-sm text-white/70">
               <button
                 type="button"
-                className="flex items-center gap-1.5 transition hover:text-white"
+                data-cursor={liked ? "Loved" : "Love"}
+                className="fashion-focus flex items-center gap-1.5 rounded-[0.7rem] transition hover:text-white"
                 onClick={() => toggle("like")}
               >
                 <Heart className={liked ? "h-4 w-4 fill-red-500 text-red-500" : "h-4 w-4"} />
@@ -159,18 +224,23 @@ export function OutfitDetail({ id }: OutfitDetailProps) {
               </span>
               <button
                 type="button"
-                className="flex items-center gap-1.5 transition hover:text-white"
+                data-cursor={saved ? "Wardrobe" : "Save"}
+                className="fashion-focus flex items-center gap-1.5 rounded-[0.7rem] transition hover:text-white"
                 onClick={() => toggle("save")}
               >
                 <Bookmark className={saved ? "h-4 w-4 fill-white text-white" : "h-4 w-4"} />
                 {formatCount(saveCount)}
               </button>
+              <span className="hidden items-center gap-1.5 md:flex">
+                <Send className="h-4 w-4" />
+                Share
+              </span>
             </div>
             <div className="flex -space-x-2">
               {outfit.palette.map((color) => (
                 <span
                   key={color}
-                  className={`h-6 w-6 rounded-full border border-white/[0.35] shadow-glass ${swatchClass(color)}`}
+                  className={`h-6 w-6 rounded-[0.35rem] border border-white/[0.35] shadow-glass ${swatchClass(color)}`}
                 />
               ))}
             </div>
@@ -182,22 +252,23 @@ export function OutfitDetail({ id }: OutfitDetailProps) {
             ))}
           </div>
 
-          <div className="mt-7">
+          <div className="mt-8">
             <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-white">Shop the look</h2>
-              <p className="text-xs text-white/40">Upper and lower wear</p>
+              <h2 className="display-editorial text-3xl text-white">Garment graph</h2>
+              <p className="label-editorial text-white/35">Tap to inspect</p>
             </div>
             <div className="grid gap-3">
               {outfit.segments.map((segment) => (
                 <motion.button
                   key={segment.key}
                   type="button"
-                  className="surface group flex items-center gap-4 rounded-[1.6rem] p-3 text-left transition duration-300 hover:border-bronze/40 hover:bg-white/[0.12]"
+                  data-cursor="Inspect"
+                  className="surface group fashion-focus flex items-center gap-4 rounded-[1rem] p-3 text-left transition duration-300 hover:border-bronze/40 hover:bg-white/[0.12]"
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setActiveSegment(segment)}
                 >
                   <span
-                    className={`h-16 w-16 rounded-[1.2rem] border border-white/20 shadow-glow ${swatchClass(segment.swatch)}`}
+                    className={`h-16 w-16 rounded-[0.8rem] border border-white/20 shadow-glow ${swatchClass(segment.swatch)}`}
                   />
                   <span className="min-w-0 flex-1">
                     <span className="block text-base font-semibold text-white">
@@ -207,7 +278,7 @@ export function OutfitDetail({ id }: OutfitDetailProps) {
                       {segment.description}
                     </span>
                   </span>
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-forest to-bronze text-white shadow-glow">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-[0.8rem] bg-gradient-to-br from-forest to-bronze text-white shadow-glow">
                     <ShoppingBag className="h-4 w-4" />
                   </span>
                 </motion.button>

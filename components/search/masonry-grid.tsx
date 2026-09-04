@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bookmark, CheckCircle2 } from "lucide-react";
+import { Bookmark, CheckCircle2, Eye } from "lucide-react";
 import Link from "next/link";
 import { Avatar } from "@/components/ui/avatar";
 import { formatCount } from "@/lib/utils";
@@ -13,17 +13,17 @@ interface MasonryGridProps {
 
 export function MasonryGrid({ outfits }: MasonryGridProps) {
   return (
-    <div className="columns-2 gap-3 px-4 pb-28 [column-fill:_balance]">
+    <div className="columns-2 gap-3 px-4 pb-28 [column-fill:_balance] md:columns-3 md:gap-4 md:px-8 lg:columns-4">
       {outfits.map((outfit, index) => (
         <motion.article
           key={outfit.id}
-          className="surface mb-3 break-inside-avoid overflow-hidden rounded-[1.55rem]"
+          className="group mb-3 break-inside-avoid overflow-hidden rounded-[1rem] border border-white/10 bg-white/[0.045] shadow-glass md:mb-4"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: Math.min(index * 0.035, 0.22) }}
           whileHover={{ y: -3 }}
         >
-          <Link href={`/outfit/${outfit.id}`} className="block">
+          <Link href={`/outfit/${outfit.id}`} data-cursor="View" className="fashion-focus block">
             <div
               className={
                 index % 3 === 0
@@ -36,15 +36,21 @@ export function MasonryGrid({ outfits }: MasonryGridProps) {
               <img
                 src={outfit.image}
                 alt={outfit.imageAlt}
-                className="image-polish h-full w-full object-cover"
+                className="image-polish h-full w-full object-cover transition duration-700 group-hover:scale-[1.045]"
                 loading={index < 3 ? "eager" : "lazy"}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-white/5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/5 to-white/5 opacity-70 transition duration-300 group-hover:opacity-100" />
+              <div className="absolute right-3 top-3 flex h-9 w-9 translate-y-2 items-center justify-center rounded-full border border-white/15 bg-black/35 opacity-0 backdrop-blur-xl transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <Eye className="h-4 w-4 text-white" />
+              </div>
+              <div className="absolute inset-x-3 bottom-3 translate-y-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <p className="label-editorial text-white/58">{outfit.style}</p>
+                <h3 className="display-editorial mt-1 text-3xl leading-[0.9] text-white">
+                  {outfit.title}
+                </h3>
+              </div>
             </div>
             <div className="space-y-2 p-3">
-              <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-white">
-                {outfit.title}
-              </h3>
               <div className="flex items-center justify-between gap-2">
                 <div className="flex min-w-0 items-center gap-2">
                   <Avatar

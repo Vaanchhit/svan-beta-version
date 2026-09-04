@@ -48,8 +48,8 @@ export function ProfileScreen({
 
   return (
     <section>
-      <ProfileHeader profile={profile} outfitCount={outfits.length} />
-      <div className="surface sticky top-0 z-10 mt-4 grid grid-cols-3 rounded-none border-x-0 bg-carbon/70 backdrop-blur-2xl">
+      <ProfileHeader profile={profile} outfits={outfits} outfitCount={outfits.length} />
+      <div className="surface sticky top-0 z-10 mt-4 grid grid-cols-3 rounded-none border-x-0 bg-carbon/70 backdrop-blur-2xl md:mx-8 md:rounded-[1rem] md:border-x">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.value;
