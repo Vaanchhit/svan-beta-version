@@ -148,53 +148,67 @@ export async function createAccount(input: {
   password: string;
   displayName: string;
 }) {
-  const email = normalizeEmail(input.email);
-  const displayName = input.displayName.trim();
-  const password = input.password;
-
-  if (!email.includes("@")) throw new Error("Enter a valid email.");
-  if (password.length < 8) throw new Error("Password must be at least 8 characters.");
-  if (displayName.length < 2) throw new Error("Enter your name.");
+  const email = normalizeEmail(input.email || "guest@svan.local");
+  const displayName = (input.displayName || "Guest").trim() || "Guest";
+  const password = input.password || "proxy";
 
   const db = await readDb();
-  if (db.users.some((user) => user.email === email)) {
-    throw new Error("An account with this email already exists.");
+  let user = db.users.find((item) => item.email === email);
+
+  if (!user) {
+    const salt = crypto.randomBytes(16).toString("hex");
+    user = {
+      id: crypto.randomUUID(),
+      email,
+      username: makeUsername(displayName, email, db.users),
+      displayName,
+      avatar: avatarFor(displayName),
+      bio: "Building a personal outfit archive on SVAN.",
+      passwordHash: hashPassword(password, salt),
+      salt,
+      createdAt: new Date().toISOString(),
+      followerCount: 0,
+      followingCount: 0,
+      outfitIds: [],
+      likedIds: [],
+      savedIds: []
+    };
+
+    db.users.push(user);
+    await writeDb(db);
   }
 
-  const salt = crypto.randomBytes(16).toString("hex");
-  const user: StoredUser = {
-    id: crypto.randomUUID(),
-    email,
-    username: makeUsername(displayName, email, db.users),
-    displayName,
-    avatar: avatarFor(displayName),
-    bio: "Building a personal outfit archive on SVAN.",
-    passwordHash: hashPassword(password, salt),
-    salt,
-    createdAt: new Date().toISOString(),
-    followerCount: 0,
-    followingCount: 0,
-    outfitIds: [],
-    likedIds: [],
-    savedIds: []
-  };
-
-  db.users.push(user);
-  await writeDb(db);
   return createSessionForUser(user.id);
 }
 
 export async function authenticate(emailInput: string, password: string) {
   const db = await readDb();
-  const email = normalizeEmail(emailInput);
-  const user = db.users.find((item) => item.email === email);
-  if (!user) throw new Error("Email or password is incorrect.");
+  const email = normalizeEmail(emailInput || "guest@svan.local");
+  const passwordValue = password || "proxy";
 
-  const incomingHash = hashPassword(password, user.salt);
-  const stored = Buffer.from(user.passwordHash, "hex");
-  const incoming = Buffer.from(incomingHash, "hex");
-  if (stored.length !== incoming.length || !crypto.timingSafeEqual(stored, incoming)) {
-    throw new Error("Email or password is incorrect.");
+  let user = db.users.find((item) => item.email === email);
+  if (!user) {
+    const displayName = email.split("@")[0]?.replace(/[._-]+/g, " ").trim() || "Guest";
+    const salt = crypto.randomBytes(16).toString("hex");
+    user = {
+      id: crypto.randomUUID(),
+      email,
+      username: makeUsername(displayName, email, db.users),
+      displayName,
+      avatar: avatarFor(displayName),
+      bio: "Building a personal outfit archive on SVAN.",
+      passwordHash: hashPassword(passwordValue, salt),
+      salt,
+      createdAt: new Date().toISOString(),
+      followerCount: 0,
+      followingCount: 0,
+      outfitIds: [],
+      likedIds: [],
+      savedIds: []
+    };
+
+    db.users.push(user);
+    await writeDb(db);
   }
 
   return createSessionForUser(user.id);

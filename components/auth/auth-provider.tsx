@@ -1,6 +1,15 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
+import {
+  createContext,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from "react";
+import { svanApi } from "@/services/svan-api";
 import type { AuthUser } from "@/types";
 
 interface AuthContextValue {
@@ -16,23 +25,71 @@ interface AuthContextValue {
   refresh: () => Promise<void>;
 }
 
-const placeholderUser: AuthUser | null = null;
-
-const placeholderContext: AuthContextValue = {
-  user: placeholderUser,
-  isLoading: false,
-  login: async () => {},
-  signup: async () => {},
-  logout: async () => {},
-  refresh: async () => {}
-};
-
-const AuthContext = createContext<AuthContextValue>(placeholderContext);
+const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  return <AuthContext.Provider value={placeholderContext}>{children}</AuthContext.Provider>;
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const refresh = useCallback(async () => {
+    const response = await svanApi.me();
+    setUser(response.user);
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    svanApi
+      .me()
+      .then((response) => {
+        if (mounted) setUser(response.user);
+      })
+      .catch(() => {
+        if (mounted) setUser(null);
+      })
+      .finally(() => {
+        if (mounted) setIsLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const login = useCallback(async (input: { email: string; password: string }) => {
+    const response = await svanApi.login({
+      email: input.email || "guest@svan.local",
+      password: input.password || "proxy"
+    });
+    setUser(response.user);
+  }, []);
+
+  const signup = useCallback(
+    async (input: { email: string; password: string; displayName: string }) => {
+      const response = await svanApi.signup({
+        email: input.email || "guest@svan.local",
+        password: input.password || "proxy",
+        displayName: input.displayName || "Guest"
+      });
+      setUser(response.user);
+    },
+    []
+  );
+
+  const logout = useCallback(async () => {
+    await svanApi.logout();
+    setUser(null);
+  }, []);
+
+  const value = useMemo(
+    () => ({ user, isLoading, login, signup, logout, refresh }),
+    [user, isLoading, login, signup, logout, refresh]
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("useAuth must be used inside AuthProvider.");
+  return context;
 }
